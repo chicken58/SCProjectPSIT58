@@ -9,3 +9,5 @@ def brick_bridge(bridge, brick_l, brick_s):
     else:
         print(brick_s-(ans1*5))
 brick_bridge(int(input()), int(input()), int(input()))
+
+Hello
