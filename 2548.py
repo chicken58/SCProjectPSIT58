@@ -37,7 +37,6 @@ def write_excel():
     collum = 3
     for year in years: # Append the result values to each cell.
         mean_men_die, mean_women_die, mean_total_die = call_excel(year)
-        print(mean_men_die, mean_women_die, mean_total_die)
         sh['A'+str(collum)] = year
         sh['C'+str(collum)] = year
         sh['E'+str(collum)] = year
@@ -48,4 +47,3 @@ def write_excel():
     wb.save('result.xlsx')
 
 write_excel()
-##print(call_excel("2555"))
