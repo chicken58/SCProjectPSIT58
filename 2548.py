@@ -26,13 +26,13 @@ def write_excel():
     wb = Workbook()
     sh = wb.active
     sh.merge_cells('B1:D1')
-    sh['B1'] = "จำนวนคนฆ่าตัวตายต่อประชากรล้านคน"
-    sh['B2'] = "ผู้ชาย"
-    sh['A2'] = "ปี(ชาย)"
-    sh['D2'] = "ผู้หญิง"
-    sh['C2'] = "ปี(หญิง)"
-    sh['F2'] = "รวม"
-    sh['E2'] = "ปี(รวม)"
+    sh['B1'] = "Number of suicides per million population."
+    sh['B2'] = "Man"
+    sh['A2'] = "Years(man)"
+    sh['D2'] = "Woman"
+    sh['C2'] = "Years(woman)"
+    sh['F2'] = "Total"
+    sh['E2'] = "Years(total)"
     years = ["2548", "2549", "2550", "2551", "2552", "2553", "2554", "2555", "2556", "2557"]
     collum = 3
     for year in years: # Append the result values to each cell.
@@ -45,16 +45,16 @@ def write_excel():
         sh['F'+str(collum)] = "%.2f" % total_die
         collum += 1
     wb.save('result.xlsx')
-    result10_man, result10_woman, result10_total = predict_10years()
+    result10_man, result10_woman, result10_total = predict_10years() # Append the predict values to result.xlsx .
     sh['A13'], sh['C13'], sh['E13'] = "2558(Predict)", "2558(Predict)", "2558(Predict)"
     sh['B13'], sh['D13'], sh['F13'] = result10_man, result10_woman, result10_total
     wb.save('result.xlsx')
 
-def predict_10years():
+def predict_10years(): # Calculate the predict values.
     wb = load_workbook('result.xlsx')
     sh = wb['Sheet']
     result10_man, result10_woman, result10_total = [], [], []
-    for row in ["B", "D", "F"]:
+    for row in ["B", "D", "F"]: # Append the values to list.
         for column in range(3, 13):
                 if row == "B":
                     result10_man.append(float(sh[row + str(column)].value))
