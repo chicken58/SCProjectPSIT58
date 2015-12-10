@@ -45,5 +45,24 @@ def write_excel():
         sh['F'+str(collum)] = "%.2f" % total_die
         collum += 1
     wb.save('result.xlsx')
+    result10_man, result10_woman, result10_total = predict_10years()
+    sh['A13'], sh['C13'], sh['E13'] = "2558(Predict)", "2558(Predict)", "2558(Predict)"
+    sh['B13'], sh['D13'], sh['F13'] = result10_man, result10_woman, result10_total
+    wb.save('result.xlsx')
+
+def predict_10years():
+    wb = load_workbook('result.xlsx')
+    sh = wb['Sheet']
+    result10_man, result10_woman, result10_total = [], [], []
+    for row in ["B", "D", "F"]:
+        for column in range(3, 13):
+                if row == "B":
+                    result10_man.append(float(sh[row + str(column)].value))
+                elif row == "D":
+                    result10_woman.append(float(sh[row + str(column)].value))
+                else: result10_total.append(float(sh[row + str(column)].value))
+    return "%.2f" %(sum(result10_man) / 10), "%.2f" %(sum(result10_woman) / 10), \
+             "%.2f" %(sum(result10_total) / 10)
 
 write_excel()
+##print(predict_10years())
