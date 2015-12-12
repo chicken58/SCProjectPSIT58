@@ -62,9 +62,9 @@ def make_a_graph():
     )
     data = [trace1, trace2, trace3]
     layout = go.Layout(
-        title='Bar graphs show total deaths from suicide in Thailand since 2548-2557.',
+        title='Bar graphs show total deaths from suicide in Thailand since 2548-2557 and predict of 2558.',
         xaxis=dict(
-            title='Total since 2548 - 2557.',
+            title='Total since 2548 - 2557 and predict of 2558.',
             titlefont=dict(
                 size=16,
                 color='rgb(107, 107, 107)'

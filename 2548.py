@@ -46,7 +46,7 @@ def write_excel():
         collum += 1
     wb.save('result.xlsx')
     result10_man, result10_woman, result10_total = predict_10years() # Append the predict values to result.xlsx .
-    sh['A13'], sh['C13'], sh['E13'] = "2558(Predict)", "2558(Predict)", "2558(Predict)"
+    sh['A13'], sh['C13'], sh['E13'] = "2558", "2558", "2558"
     sh['B13'], sh['D13'], sh['F13'] = result10_man, result10_woman, result10_total
     wb.save('result.xlsx')
 
