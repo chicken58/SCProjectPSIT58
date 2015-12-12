@@ -20,6 +20,19 @@ is\All, the result will display 2548-2557 and predict of 2558.)**")
         lis = [str(i) for i in range(int(first), int(last)+1)]
         return lis
 
+def call_from_result():
+    wb = load_workbook('result.xlsx')
+    sh = wb['Sheet']
+    year = put_input()
+    man_lis, woman_lis, total_lis = [], [], []
+    for i in year:
+        for j in range(3, 14):
+            if sh['A'+str(j)].value == i:
+                man_lis.append(float(sh['B'+str(j)].value))
+                woman_lis.append(float(sh['D'+str(j)].value))
+                total_lis.append(float(sh['F'+str(j)].value))
+    return man_lis, woman_lis, total_lis, year
+
 def make_a_graph():
     man_lis, woman_lis, total_lis, year_range = call_from_result()
     trace1 = go.Bar(
