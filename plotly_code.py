@@ -17,7 +17,7 @@ year.)**\n    **(4. If your input is\All, the result will display 2548-2557 and 
         if the_input == "all" or the_input == "All" or the_input == "ALL":
             return ['2548', '2549', '2550', '2551', '2552', '2553', '2554', '2555', '2556', '2557', '2558']
         elif "-" not in the_input:
-            print("Your input is invalid, plase put your input again.")
+            print("Your input is invalid, please put your input again.")
         else:
             first, last = the_input.split("-")
             if 2548 <= int(first) <= 2557 and 2548 <= int(last) <= 2557 and int(last) >= int(first):
