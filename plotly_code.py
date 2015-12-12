@@ -10,7 +10,7 @@ import plotly.graph_objs as go
 
 def put_input():
     print("How to input?\nEx.\n    1. 2548-2552\n    2. 2550-2557\n    3. 2557-2557\n    4. All\n    \
-**(1. & 2. The range of input have to more then 2547 and less than 2558.)**\n    **(3. Show one \
+**(1. & 2. The range of input have to more than 2547 and less than 2558.)**\n    **(3. Show one \
 year.)**\n    **(4. If your input is\All, the result will display 2548-2557 and predict of 2558.)**")
     while True:
         the_input = input("Please put your input : ")
