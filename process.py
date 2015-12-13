@@ -1,9 +1,11 @@
+"""Process the suicide data from database."""
 import warnings
 warnings.filterwarnings("ignore")
 from openpyxl import load_workbook
 from openpyxl import Workbook
 
 def call_excel(year):
+    """Return the values of suicide man, woman and total from excel files."""
     sum_men_die = 0
     sum_men = 0
     sum_women_die = 0
@@ -23,6 +25,7 @@ def call_excel(year):
     return  mean_men_die, mean_women_die, total_die
 
 def write_excel():
+    """Create result.xlsx and add result from the data in excel files."""
     wb = Workbook()
     sh = wb.active
     sh.merge_cells('B1:D1')
@@ -50,7 +53,8 @@ def write_excel():
     sh['B13'], sh['D13'], sh['F13'] = result10_man, result10_woman, result10_total
     wb.save('result.xlsx')
 
-def predict_10years(): # Calculate the predict values.
+def predict_10years():
+    """Calculate the predict values."""
     wb = load_workbook('result.xlsx')
     sh = wb['Sheet']
     result10_man, result10_woman, result10_total = [], [], []
@@ -65,4 +69,4 @@ def predict_10years(): # Calculate the predict values.
              "%.2f" %(sum(result10_total) / 10)
 
 write_excel()
-##print(predict_10years())
+

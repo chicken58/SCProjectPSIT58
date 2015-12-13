@@ -1,6 +1,4 @@
-# Learn about API authentication here: https://plot.ly/python/getting-started
-# Find your api_key here: https://plot.ly/settings/api
-
+"""Plot the graph in plot.ly with result.xlsx ."""
 import warnings
 warnings.filterwarnings("ignore")
 from openpyxl import load_workbook
@@ -9,10 +7,11 @@ import plotly.plotly as py
 import plotly.graph_objs as go
 
 def put_input():
+    """Get a input from user and repeat get input if the input is invalid."""
     print("How to input?\nEx.\n    1. 2548-2552\n    2. 2550-2557\n    3. 2557-2557\n    4. All\n    \
 **(1. & 2. The range of input have to more than 2547 and less than 2558.)**\n    **(3. Show one \
 year.)**\n    **(4. If your input is\All, the result will display 2548-2557 and predict of 2558.)**")
-    while True:
+    while True: # repeat if a input is invalid.
         the_input = input("Please put your input : ")
         if the_input == "all" or the_input == "All" or the_input == "ALL":
             return ['2548', '2549', '2550', '2551', '2552', '2553', '2554', '2555', '2556', '2557', '2558']
@@ -26,6 +25,7 @@ year.)**\n    **(4. If your input is\All, the result will display 2548-2557 and 
             else: print("Your input is invalid, plase put your input again.")
 
 def call_from_result():
+    """Call information from result.xlsx and return list of information."""
     wb = load_workbook('result.xlsx')
     sh = wb['Sheet']
     year = put_input()
@@ -39,6 +39,7 @@ def call_from_result():
     return man_lis, woman_lis, total_lis, year
 
 def title(year_range):
+    """Return title that match the input."""
     if year_range == [str(i) for i in range(2548, 2559)]:
         pre_title = "since 2548-2557 and predict of 2558."
     else:
@@ -49,6 +50,7 @@ def title(year_range):
     return title_1, title_2
 
 def make_a_graph():
+    """Run and display graph in plot.ly ."""
     man_lis, woman_lis, total_lis, year_range = call_from_result()
     title_1, title_2 = title(year_range)
     trace1 = go.Bar(
@@ -58,7 +60,7 @@ def make_a_graph():
         marker=dict(
             color='rgb(55, 83, 109)'
         )
-    )
+    ) # Man graph
     trace2 = go.Bar(
         x=year_range,
         y=woman_lis,
@@ -67,7 +69,7 @@ def make_a_graph():
 
             color='rgb(26, 118, 255)'
         )
-    )
+    ) # Woman graph
     trace3 = go.Bar(
         x=year_range,
         y=total_lis,
@@ -75,7 +77,7 @@ def make_a_graph():
         marker=dict(
             color='rgb(13, 158, 188)'
         )
-    )
+    ) # Total graph
     data = [trace1, trace2, trace3]
     layout = go.Layout(
         title=title_1,
