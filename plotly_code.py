@@ -42,6 +42,8 @@ def title(year_range):
     """Return title that match the input."""
     if year_range == [str(i) for i in range(2548, 2559)]:
         pre_title = "since 2548-2557 and predict of 2558."
+    elif len(year_range) == 1:
+        pre_title = "of " + year_range[0] + "."
     else:
         first, last = year_range[0], year_range[-1]
         pre_title = "since "+ first + "-" + last + "."
