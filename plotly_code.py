@@ -68,7 +68,6 @@ def make_a_graph():
         y=woman_lis,
         name='Woman',
         marker=dict(
-
             color='rgb(26, 118, 255)'
         )
     ) # Woman graph
